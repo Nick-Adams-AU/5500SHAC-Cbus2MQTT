@@ -1,5 +1,4 @@
 # 5500SHAC-Cbus2MQTT
-========
  Push and pull Cbus events from a 5500SHAC to MQTT.
 
  I use this to integrate my Cbus installation with [Home Assistant](https://www.home-assistant.io/).
@@ -7,10 +6,10 @@
  [Based on cgateweb by the1laz](https://github.com/the1laz/cgateweb).
 
 ## Install:
-+Log into your 5500SHAC, navigate to the "Scripting" section and install the two resident scripts and the event based script into their relevant sections. 
-+Update your MQTT server hostname, username and password details in the resident scripts. 
-+Activate the scripts.
-+Tag all the objects with the "All" keyword to events are pushed to the cbus2mqtt script. You can use this script to easily do this
+1. Log into your 5500SHAC, navigate to the "Scripting" section and install the two resident scripts and the event based script into their relevant sections. 
+2. Update your MQTT server hostname, username and password details in the resident scripts. 
+3. Activate the scripts.
+4. Tag all the objects with the "All" keyword to events are pushed to the cbus2mqtt script. You can use this script to easily do this
 ```lua
 for i = 0,255 do
   grp.addtags('0/56/'..i, 'All')
