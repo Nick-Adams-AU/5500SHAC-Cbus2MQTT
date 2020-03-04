@@ -22,18 +22,18 @@ end
 
 ### Updates get published on these topics:
 
- - cbus/read/#1/#2/#3/state  -  ON/OFF gets published to these topics if the light is turned on/off
+ - cbus/read/#1/#2/#3/state  -  ON/OFF gets published to these topics if the group is turned ON/OFF.
 
- - cbus/read/#1/#2/#3/level  -  The level of the light gets published to these topics
+ - cbus/read/#1/#2/#3/level  -  The level of the group gets published to these topics. 0-255
 
-### Publish to these topics to control the lights:
+### Publish to these topics to control a group address:
 
  - cbus/write/#1/#2/#3/switch  -  Publish ON/OFF to these topics to turn lights on/off
 
  - cbus/write/#1/#2/#3/ramp  -  Publish a % to ramp to that %. Optionally add a comma then a time (e.g. 50,4s or 100,2m).
 
- - cbus/write/#1/#2/#3/measurement - Publish a measurement value (i.e. temperature) to a Cbus measurement application. Values are divided by 10 so a MQTT value of 301 becomes 30.1.
+ - cbus/write/#1/#2/#3/measurement - Publish a measurement value (i.e. temperature) to a Cbus measurement application. Values are divided by 10 so a MQTT value of 301 becomes 30.1 when published to Cbus.
 
-### This requests an update from all lights:
+### This requests an update from all addresses:
 
- - cbus/write/#1/#2//getall - current values get published on the cbus/read topics
+ - cbus/write/#1/#2//getall - Current values get published on the cbus/read topics. This is handy to periodically "re-sync" your MQTT subscribers on reboot or if they miss an update.
