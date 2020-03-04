@@ -32,6 +32,8 @@ end
 
  - cbus/write/#1/#2/#3/ramp  -  Publish a % to ramp to that %. Optionally add a comma then a time (e.g. 50,4s or 100,2m).
 
+ - cbus/write/#1/#2/#3/measurement - Publish a measurement value (i.e. temperature) to a Cbus measurement application. Values are divided by 10 so a MQTT value of 301 becomes 30.1.
+
 ### This requests an update from all lights:
 
  - cbus/write/#1/#2//getall - current values get published on the cbus/read topics
