@@ -37,3 +37,31 @@ end
 ### This requests an update from all addresses:
 
  - cbus/write/#1/#2//getall - Current values get published on the cbus/read topics. This is handy to periodically "re-sync" your MQTT subscribers on reboot or if they miss an update.
+
+## Home Assistant MQTT config
+
+  Your Home Assistant light and/or switch entities should look like this:
+
+```yaml
+lights:
+  # Switch
+  - platform: mqtt
+    name: Bathroom
+    state_topic: 'cbus/read/254/56/1/state'
+    command_topic: 'cbus/write/254/56/1/switch'
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    unique_id: mqtt_1
+
+  # Dimmer
+  - platform: mqtt
+    name: Bedroom
+    state_topic: 'cbus/read/254/56/2/state'
+    command_topic: 'cbus/write/254/56/2/switch'
+    brightness_state_topic: 'cbus/read/254/56/2/level'
+    brightness_command_topic: 'cbus/write/254/56/2/ramp'
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    on_command_type: 'brightness'
+    unique_id: mqtt_2
+```
