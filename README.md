@@ -30,7 +30,7 @@ end
 
  - cbus/write/#1/#2/#3/switch  -  Publish ON/OFF to these topics to turn lights on/off
 
- - cbus/write/#1/#2/#3/ramp  -  Publish a % to ramp to that %. Optionally add a comma then a time (e.g. 50,4s or 100,2m).
+ - cbus/write/#1/#2/#3/ramp  -  Publish a % to ramp to that %. Optionally add a comma then a time in seconds (e.g. 50,4 or 128,2).
 
  - cbus/write/#1/#2/#3/measurement - Publish a measurement value (i.e. temperature) to a Cbus measurement application. Values are divided by 10 so a MQTT value of 301 becomes 30.1 when published to Cbus.
 

@@ -73,7 +73,7 @@ client.ON_MESSAGE = function(mid, topic, payload)
       ramp = string.split(payload, ",")
       num = round(ramp[1])
       if num and num < 256 then
-        if ramp[2] ~= nil and ramp[2] > 1 then
+        if ramp[2] ~= nil and tonumber(ramp[2]) > 1 then
 	        SetCBusLevel(0, parts[4], parts[5], num, ramp[2])
         else
 	        SetCBusLevel(0, parts[4], parts[5], num, 0)
