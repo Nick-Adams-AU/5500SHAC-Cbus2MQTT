@@ -88,3 +88,8 @@ end
 client:login_set(mqtt_username, mqtt_password)
 client:connect(mqtt_broker)
 client:loop_forever()
+
+function round(num, numDecimalPlaces)
+  local mult = 10^(numDecimalPlaces or 0)
+  return math.floor(num * mult + 0.5) / mult
+end
