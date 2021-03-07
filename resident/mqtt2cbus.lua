@@ -71,7 +71,7 @@ client.ON_MESSAGE = function(mid, topic, payload)
       SetCBusLevel(0, parts[4], parts[5], 0)
     else
       ramp = string.split(payload, ",")
-      num = round(ramp[1])
+      num = math.floor(ramp[1] + 0.5)
       if num and num < 256 then
         if ramp[2] ~= nil and tonumber(ramp[2]) > 1 then
 	        SetCBusLevel(0, parts[4], parts[5], num, ramp[2])
@@ -88,8 +88,3 @@ end
 client:login_set(mqtt_username, mqtt_password)
 client:connect(mqtt_broker)
 client:loop_forever()
-
-function round(num, numDecimalPlaces)
-  local mult = 10^(numDecimalPlaces or 0)
-  return math.floor(num * mult + 0.5) / mult
-end
