@@ -16,6 +16,8 @@ for i = 0,255 do
 end 
 ```
 
+### Note that the Home Assistsant internal MQTT broker is known to cause issues. Please use an external MQTT broker like Mosquitto.
+
 ## Examples
 
  In these examples, #1, #2 and #3 represent the Cbus network number, application number, and the group number.
