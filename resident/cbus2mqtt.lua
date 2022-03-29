@@ -7,6 +7,7 @@
 mqtt_broker = 'YOUR_MQTT_HOST'
 mqtt_username = 'YOUR_MQTT_USERNAME'
 mqtt_password = 'YOUR_MQTT_PASSWORD'
+mqtt_clientid = 'cbus2mqtt'
 
 mqtt_read_topic = 'cbus/read/'
 
@@ -14,7 +15,7 @@ mqtt_read_topic = 'cbus/read/'
 mqtt = require("mosquitto")
 
 -- create new mqtt client
-client = mqtt.new()
+client = mqtt.new(mqtt_clientid)
 
 log("created MQTT client", client)
 
