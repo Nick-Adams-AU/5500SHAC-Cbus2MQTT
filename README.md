@@ -16,8 +16,6 @@ for i = 0,255 do
 end 
 ```
 
-### Note that the Home Assistsant internal MQTT broker is known to cause issues. Please use an external MQTT broker like Mosquitto.
-
 ## Examples
 
  In these examples, #1, #2 and #3 represent the Cbus network number, application number, and the group number.
@@ -32,7 +30,7 @@ end
 
  - cbus/write/#1/#2/#3/switch  -  Publish ON/OFF to these topics to turn lights on/off
 
- - cbus/write/#1/#2/#3/ramp  -  Publish a % to ramp to that %. Optionally add a comma then a time in seconds (e.g. 50,4 or 128,2).
+ - cbus/write/#1/#2/#3/ramp  -  Publish a CBus level (0-255) to ramp to. Optionally add a comma then a time in seconds (e.g. 50,4 or 128,2).
 
  - cbus/write/#1/#2/#3/measurement - Publish a measurement value (i.e. temperature) to a Cbus measurement application. Values are divided by 10 so a MQTT value of 301 becomes 30.1 when published to Cbus.
 
@@ -66,4 +64,17 @@ lights:
     payload_off: 'OFF'
     on_command_type: 'brightness'
     unique_id: mqtt_2
+fan:
+  # Fan
+  - platform: mqtt
+    name: Bedroom fan
+    state_topic: 'cbus/read/254/56/3/state'
+    command_topic: 'cbus/write/254/56/3/switch'
+    percentage_state_topic: 'cbus/read/254/56/3/level'
+    percentage_command_topic: 'cbus/write/254/56/3/ramp'
+    speed_range_max: 255
+    payload_on: 'ON'
+    payload_off: 'OFF'
+    optimistic: true
+    unique_id: mqtt_3
 ```
