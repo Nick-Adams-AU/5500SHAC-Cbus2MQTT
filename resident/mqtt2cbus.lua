@@ -67,9 +67,9 @@ client.ON_MESSAGE = function(mid, topic, payload)
   elseif parts[6] == "ramp" then
 
     if payload == "ON" then
-			SetCBusLevel(0, parts[4], parts[5], 255)
+			SetCBusLevel(0, parts[4], parts[5], 255, 0)
     elseif payload == "OFF" then
-      SetCBusLevel(0, parts[4], parts[5], 0)
+      SetCBusLevel(0, parts[4], parts[5], 0, 0)
     else
       ramp = string.split(payload, ",")
       num = math.floor(ramp[1] + 0.5)
