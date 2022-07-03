@@ -40,41 +40,53 @@ end
 
 ## Home Assistant MQTT config
 
-  Your Home Assistant light and/or switch entities should look like this:
+  Your Home Assistant MQTT light, switch, fan or cover entities should look like this:
 
 ```yaml
-lights:
-  # Switch
-  - platform: mqtt
-    name: Bathroom
-    state_topic: 'cbus/read/254/56/1/state'
-    command_topic: 'cbus/write/254/56/1/switch'
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    unique_id: mqtt_1
+mqtt:
+  switch:
+    # Switch
+    - name: Bathroom
+      state_topic: 'cbus/read/254/56/1/state'
+      command_topic: 'cbus/write/254/56/1/switch'
+      payload_on: 'ON'
+      payload_off: 'OFF'
+      unique_id: mqtt_1
 
-  # Dimmer
-  - platform: mqtt
-    name: Bedroom
-    state_topic: 'cbus/read/254/56/2/state'
-    command_topic: 'cbus/write/254/56/2/switch'
-    brightness_state_topic: 'cbus/read/254/56/2/level'
-    brightness_command_topic: 'cbus/write/254/56/2/ramp'
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    on_command_type: 'brightness'
-    unique_id: mqtt_2
-fan:
-  # Fan
-  - platform: mqtt
-    name: Bedroom fan
-    state_topic: 'cbus/read/254/56/3/state'
-    command_topic: 'cbus/write/254/56/3/switch'
-    percentage_state_topic: 'cbus/read/254/56/3/level'
-    percentage_command_topic: 'cbus/write/254/56/3/ramp'
-    speed_range_max: 255
-    payload_on: 'ON'
-    payload_off: 'OFF'
-    optimistic: true
-    unique_id: mqtt_3
+    # Dimmer
+    - name: Bedroom
+      state_topic: 'cbus/read/254/56/2/state'
+      command_topic: 'cbus/write/254/56/2/switch'
+      brightness_state_topic: 'cbus/read/254/56/2/level'
+      brightness_command_topic: 'cbus/write/254/56/2/ramp'
+      payload_on: 'ON'
+      payload_off: 'OFF'
+      on_command_type: 'brightness'
+      unique_id: mqtt_2
+  fan:
+    # Fan
+    - name: Bedroom fan
+      state_topic: 'cbus/read/254/56/3/state'
+      command_topic: 'cbus/write/254/56/3/switch'
+      percentage_state_topic: 'cbus/read/254/56/3/level'
+      percentage_command_topic: 'cbus/write/254/56/3/ramp'
+      speed_range_max: 255
+      payload_on: 'ON'
+      payload_off: 'OFF'
+      optimistic: true
+      unique_id: mqtt_3
+  cover:
+    # Cover
+    - name: Outdoor blind - south
+      position_topic: 'cbus/read/254/56/4/level'
+      set_position_topic: 'cbus/write/254/56/4/ramp'
+      position_open: 255
+      position_closed: 0
+      payload_open: 255
+      payload_close: 0
+      state_open: 255
+      state_closed: 0
+      device_class: blind
+      command_topic: 'cbus/write/254/56/4/ramp'
+      unique_id: mqtt_4
 ```
