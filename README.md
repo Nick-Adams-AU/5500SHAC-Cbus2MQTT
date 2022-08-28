@@ -4,6 +4,10 @@
  I use this to integrate my Cbus installation with [Home Assistant](https://www.home-assistant.io/).
 
  [Based on cgateweb by the1laz](https://github.com/the1laz/cgateweb).
+ 
+ ## Similar projects:
+ - [acMqtt](https://github.com/autoSteve/acMqtt) from autoSteve. Includes Home Assistant auto-discovery by using Cbus tags. Very cool!
+ - [cbus](https://github.com/micolous/cbus) from micolous.
 
 ## Install:
 1. Log into your 5500SHAC, navigate to the "Scripting" section and install the two resident scripts and the event based script into their relevant sections. 
